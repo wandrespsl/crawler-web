@@ -8,8 +8,9 @@ const router = express.Router();
 
 router.get("/", function(req, res) {
   const filterCatalogue = req.query.keyword;
+  const keyword = filterCatalogue.replace(/\s/g, "+");
   controller
-    .getCatalogue(filterCatalogue)
+    .getCatalogue(keyword)
     .then(catalogueList => {
       response.success(req, res, catalogueList, 200);
     })

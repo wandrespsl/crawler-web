@@ -1,25 +1,27 @@
-// fetch("http://localhost:3000/crawler/?keyword=calculo")
-//   .then(function(response) {
-//     return response.json();
-//   })
-//   .then(function(records) {
-//     console.log("recordsJIC", records);
-//   })
-//   .catch(function() {
-//     console.log("algo falló");
-//   });
+document.querySelector("button.btn-secondary").addEventListener("click", () => {
+  const keyword = document.querySelector("input.form-control").value;
+  load(keyword);
+});
 
-(async function load() {
+async function load(keyword) {
   async function getData(url) {
     const response = await fetch(url);
     const data = await response.json();
-    return data;
+
+    const lengthData = data.body.records.length;
+    console.log("array", lengthData);
+
+    if (lengthData == 0) {
+      console.log("no hay datos");
+      return;
+    } else {
+      return data;
+    }
+
+    // return data;
   }
 
-  const keyword = document.querySelector("input.form-control").value;
-
   const urlPoli = "http://localhost:3000/crawler/?keyword=" + keyword;
-
   const recordsJIC = await getData(urlPoli);
 
   console.log(recordsJIC);
@@ -93,4 +95,4 @@
   const $contentContainerRow = document.querySelector("tbody.record-row");
   const row = document.querySelector("#row");
   renderRow(recordsJIC.body.records, $contentContainerRow, row);
-})();
+}
