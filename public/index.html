@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="./src/imgs/logomesa-01.png" />
+    <title>MBIES Catálogos web</title>
+    <!-- Bootstrap -->
+    <link href="src/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- css -->
+    <link href="src/css/main.css" rel="stylesheet" />
+    <!-- fontawesome -->
+    <link href="src/font/fontawesome/css/all.css" rel="stylesheet" />
+    <!--load all styles -->
+  </head>
+
+  <body>
+    <div class="bg">
+      <div class="header">
+        <img src="src/imgs/logomesa-01.png" alt="MBIES" />
+      </div>
+      <div class="container">
+        <div class="content">
+          <form action="" class="form-search">
+            <div class="search-radio">
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  id="palabra-clave"
+                  name="search-radio"
+                  checked
+                />
+                <label class="custom-control-label" for="palabra-clave"
+                  >Palabra Clave</label
+                >
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  id="autor"
+                  name="search-radio"
+                />
+                <label class="custom-control-label" for="autor">Autor</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input
+                  type="radio"
+                  class="custom-control-input"
+                  id="titulo"
+                  name="search-radio"
+                />
+                <label class="custom-control-label" for="titulo">Título</label>
+              </div>
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Busca por palabra clave"
+                id="input-search"
+                value="java"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-secondary" type="button">
+                  <div class="radius">
+                    <i class="fa fa-search"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </form>
+
+          <div class="content-card"></div>
+
+          <div class="content-table">
+            <div class="table-header">
+              <div class="back">
+                <img src="src/imgs/back.svg" alt="" />
+                <span>Regresar</span>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-striped" id="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Rank</th>
+                    <th scope="col">Autor</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Ver Detalle</th>
+                  </tr>
+                </thead>
+                <tbody class="record-row"></tbody>
+              </table>
+            </div>
+            <template id="row">
+              <tr>
+                <th scope="row"></td>
+                <td></td>
+                <td></td>
+                <td class="text-center"><a href="#" target="blank"><i class="fas fa-link"></i></a></td>
+              </tr>
+            </template>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="src/bootstrap/js/bootstrap.min.js"></script>
+    <script src="src/js/main.js"></script>
+  </body>
+</html>
