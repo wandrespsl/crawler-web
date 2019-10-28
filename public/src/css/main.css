@@ -50,6 +50,9 @@ body {
 .table th {
   vertical-align: middle;
 }
+.content-table {
+  display: block;
+}
 .content-table .table-header {
   background-color: white;
   display: flex;
@@ -239,4 +242,8 @@ form.form-search {
   .container {
     max-width: initial;
   }
+}
+
+.div-hidden {
+  display: none;
 }
