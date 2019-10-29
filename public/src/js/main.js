@@ -81,24 +81,25 @@ async function load(keyword) {
     const $contentContainerCard = document.querySelector(".content-card");
     renderCard(recordsJIC.body, $contentContainerCard);
 
-    document.querySelector("#card-poli-jic").addEventListener("click", () => {
-      function renderRow(list, $container, row) {
-        list.forEach(tr => {
-          const clone = row.content.cloneNode(true);
-          const tds = clone.querySelectorAll("td");
-          const th = clone.querySelector("th");
-          const aHref = clone.querySelector("a");
-          aHref.href = tr.detail;
-          th.textContent = tr.rank;
-          tds[0].textContent = tr.author;
-          tds[1].textContent = tr.title;
-          $container.appendChild(clone);
-        });
-      }
+    function renderRow(list, $container, row) {
+      list.forEach(tr => {
+        const clone = row.content.cloneNode(true);
+        const tds = clone.querySelectorAll("td");
+        const th = clone.querySelector("th");
+        const aHref = clone.querySelector("a");
+        aHref.href = tr.detail;
+        th.textContent = tr.rank;
+        tds[0].textContent = tr.author;
+        tds[1].textContent = tr.title;
+        $container.appendChild(clone);
+      });
+    }
 
-      const $contentContainerRow = document.querySelector("tbody.record-row");
-      const row = document.querySelector("#row");
-      renderRow(recordsJIC.body.records, $contentContainerRow, row);
+    const $contentContainerRow = document.querySelector("tbody.record-row");
+    const row = document.querySelector("#row");
+    renderRow(recordsJIC.body.records, $contentContainerRow, row);
+
+    document.querySelector("#card-poli-jic").addEventListener("click", () => {
 
       const $contenTable = document.querySelector(".content-table");
       $contenTable.classList.remove("div-hidden");
