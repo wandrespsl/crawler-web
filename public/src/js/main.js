@@ -1,50 +1,57 @@
-document.querySelector("button.btn-secondary").addEventListener("click", () => {
+const BASE_API = "http://localhost:3000/crawler/";
+
+async function getData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+const $formButton = document.querySelector("button.btn-secondary");
+
+function templateCard(card) {
+  return `
+    <div class="card" id="card-${card.nameU}">
+        <div class="img">
+            <img
+            src="src/imgs/${card.nameU}.png"
+            class="card-img-top"
+            alt="${card.nameU}"
+            />
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">
+            Registros encontrados: <span>${card.totalRecords}</span>
+            </h5>
+        </div>
+    </div>`;
+}
+
+$formButton.addEventListener("click", async event => {
+  event.preventDefault();
   const keyword = document.querySelector("input.form-control").value;
-  load(keyword);
+
+  const data = new FormData(form);
+
 });
 
 async function load(keyword) {
-  async function getData(url) {
-    const response = await fetch(url);
-    const data = await response.json();
-    return data;
-  }
-
-  const urlPoli = "http://localhost:3000/crawler/?keyword=" + keyword;
-  const recordsJIC = await getData(urlPoli);
+  // const urlPoli = "http://localhost:3000/crawler/polijic/?keyword=" + keyword;
+  const urlUdea = "http://localhost:3000/crawler/udea/?keyword=" + keyword;
+  // const recordsJIC = await getData(urlPoli);
+  const recordsJIC = await getData(urlUdea);
 
   console.log(recordsJIC);
+  console.log(urlUdea);
 
-  // const lengthData = recordsJIC.body.records.length;
-  
-  // const var1 = { ...recordsJIC };
   const res = [recordsJIC];
 
+  // var poliRes = res.find(r => r.body.nameU == "poli-jic");
+  var poliRes = res.find(r => r.body.nameU == "udea");
 
-  var poliRes = res.find(r => r.body.nameU == "poli-jic");
-
-  console.log('res', res);
-  console.log('poliRes', poliRes);
+  console.log("res", res);
+  console.log("poliRes", poliRes);
 
   if (poliRes) {
-    function templateCard(card) {
-      return `
-          <div class="card" id="card-${card.nameU}">
-              <div class="img">
-                  <img
-                  src="src/imgs/${card.nameU}.png"
-                  class="card-img-top"
-                  alt="${card.nameU}"
-                  />
-              </div>
-              <div class="card-body">
-                  <h5 class="card-title">
-                  Registros encontrados: <span>${card.totalRecords}</span>
-                  </h5>
-              </div>
-          </div>`;
-    }
-
     function templateTableHeader(header) {
       return `
         <div class="title">
@@ -72,7 +79,7 @@ async function load(keyword) {
       const cardElement = createTemplate(HTMLString);
       $container.append(cardElement);
       const $card = document.querySelector(".card");
-      $card.style.animation = 'cardIn .8s forwards';
+      $card.style.animation = "cardIn .8s forwards";
     }
 
     const $contentContainerTableHeader = document.querySelector(
@@ -101,11 +108,19 @@ async function load(keyword) {
     const row = document.querySelector("#row");
     renderRow(recordsJIC.body.records, $contentContainerRow, row);
 
-    document.querySelector("#card-poli-jic").addEventListener("click", () => {
+    // document.querySelector("#card-poli-jic").addEventListener("click", () => {
+    //   const $contenTable = document.querySelector(".content-table");
+    //   $contenTable.classList.remove("div-hidden");
+    //   $contenTable.style.animation = "tableIn .8s forwards";
 
+    //   const $contentCard = document.querySelector(".content-card");
+    //   $contentCard.classList.add("div-hidden");
+    // });
+
+    document.querySelector("#card-udea").addEventListener("click", () => {
       const $contenTable = document.querySelector(".content-table");
       $contenTable.classList.remove("div-hidden");
-      $contenTable.style.animation = 'tableIn .8s forwards';
+      $contenTable.style.animation = "tableIn .8s forwards";
 
       const $contentCard = document.querySelector(".content-card");
       $contentCard.classList.add("div-hidden");
@@ -114,13 +129,13 @@ async function load(keyword) {
     document.querySelector(".back").addEventListener("click", () => {
       const $contenTable = document.querySelector(".content-table");
       $contenTable.classList.add("div-hidden");
-      $contenTable.style.animation = 'tableIn .8s forwards';
+      $contenTable.style.animation = "tableIn .8s forwards";
 
       const $contentCard = document.querySelector(".content-card");
       $contentCard.classList.remove("div-hidden");
 
       const $card = document.querySelector(".card");
-      $card.style.animation = 'cardIn .8s forwards';
+      $card.style.animation = "cardIn .8s forwards";
     });
   } else {
     console.log(recordsJIC.body);
