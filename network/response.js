@@ -2,6 +2,7 @@ const statusMessages = {
   "200": "Done",
   "201": "Created",
   "400": "Invalid",
+  "404": "Not found",
   "500": "Internal error"
 };
 

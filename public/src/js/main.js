@@ -15,36 +15,44 @@ async function load(keyword) {
 
   console.log(recordsJIC);
 
-  const lengthData = recordsJIC.body.records.length;
-  if (lengthData == 0) {
-    console.log("no hay datos");
-  } else {
+  // const lengthData = recordsJIC.body.records.length;
+  
+  // const var1 = { ...recordsJIC };
+  const res = [recordsJIC];
+
+
+  var poliRes = res.find(r => r.body.nameU == "poli-jic");
+
+  console.log('res', res);
+  console.log('poliRes', poliRes);
+
+  if (poliRes) {
     function templateCard(card) {
       return `
-        <div class="card" id="card-${card.nameU}">
-            <div class="img">
-                <img
-                src="src/imgs/${card.nameU}.png"
-                class="card-img-top"
-                alt="${card.nameU}"
-                />
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">
-                Registros encontrados: <span>${card.totalRecords}</span>
-                </h5>
-            </div>
-        </div>`;
+          <div class="card" id="card-${card.nameU}">
+              <div class="img">
+                  <img
+                  src="src/imgs/${card.nameU}.png"
+                  class="card-img-top"
+                  alt="${card.nameU}"
+                  />
+              </div>
+              <div class="card-body">
+                  <h5 class="card-title">
+                  Registros encontrados: <span>${card.totalRecords}</span>
+                  </h5>
+              </div>
+          </div>`;
     }
 
     function templateTableHeader(header) {
       return `
-      <div class="title">
-        <img src="src/imgs/${header.nameU}.png" alt="${header.nameU}" />
-        <h2>${header.universidad}</h2>
-        <a href="${header.url}" target="blank">Ver lista completa</a>
-      </div>
-      `;
+        <div class="title">
+          <img src="src/imgs/${header.nameU}.png" alt="${header.nameU}" />
+          <h2>${header.universidad}</h2>
+          <a href="${header.url}" target="blank">Ver lista completa</a>
+        </div>
+        `;
     }
 
     function createTemplate(HTMLString) {
@@ -106,5 +114,7 @@ async function load(keyword) {
       const $contentCard = document.querySelector(".content-card");
       $contentCard.classList.remove("div-hidden");
     });
+  } else {
+    console.log(recordsJIC.body);
   }
 }
