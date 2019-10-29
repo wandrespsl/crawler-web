@@ -71,6 +71,8 @@ async function load(keyword) {
       const HTMLString = templateCard(list);
       const cardElement = createTemplate(HTMLString);
       $container.append(cardElement);
+      const $card = document.querySelector(".card");
+      $card.style.animation = 'cardIn .8s forwards';
     }
 
     const $contentContainerTableHeader = document.querySelector(
@@ -103,6 +105,7 @@ async function load(keyword) {
 
       const $contenTable = document.querySelector(".content-table");
       $contenTable.classList.remove("div-hidden");
+      $contenTable.style.animation = 'tableIn .8s forwards';
 
       const $contentCard = document.querySelector(".content-card");
       $contentCard.classList.add("div-hidden");
@@ -111,9 +114,13 @@ async function load(keyword) {
     document.querySelector(".back").addEventListener("click", () => {
       const $contenTable = document.querySelector(".content-table");
       $contenTable.classList.add("div-hidden");
+      $contenTable.style.animation = 'tableIn .8s forwards';
 
       const $contentCard = document.querySelector(".content-card");
       $contentCard.classList.remove("div-hidden");
+
+      const $card = document.querySelector(".card");
+      $card.style.animation = 'cardIn .8s forwards';
     });
   } else {
     console.log(recordsJIC.body);
