@@ -2,8 +2,6 @@ const BASE_API = "http://localhost:3000/crawler/";
 
 async function getData(url) {
   const response = await fetch(url);
-  console.log(url);
-  
   const data = await response.json();
   return data;
 }
@@ -31,8 +29,7 @@ function templateCard(card) {
 function templateTableHeader(header) {
   return `
     <div class="title">
-      <img src="src/imgs/${header.nameU}.png" alt="${header.nameU}" />
-      <h2>${header.universidad}</h2>
+      <img src="src/imgs/${header.nameU}.png" alt="${header.nameU}" />      
       <a href="${header.url}" target="blank">Ver lista completa</a>
     </div>
     `;
@@ -43,6 +40,7 @@ function createTemplate(HTMLString) {
   html.body.innerHTML = HTMLString;
   return html.body.children[0];
 }
+
 function renderTableHeader(list, $container) {
   const $tableHeaderTitle = document.querySelector(".title");
   if ($container.children.length > 1) {
@@ -73,6 +71,7 @@ function renderRow(list, $container, $row) {
     $container.appendChild(clone);
   });
 }
+
 function addEventClick($element, data) {
   $element.addEventListener("click", () => {
     const $contentContainerTableHeader = document.querySelector(
@@ -92,6 +91,7 @@ $formButton.addEventListener("click", async event => {
   const keyword = document.querySelector("input.form-control").value;
   loadCatalogue("polijic", keyword);
   loadCatalogue("udea", keyword);
+  loadCatalogue("itm", keyword);
 });
 
 function showTable() {

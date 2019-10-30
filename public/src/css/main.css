@@ -69,6 +69,7 @@ body {
   display: flex;
   align-items: center;
   flex: 1 0 auto;
+  justify-content: space-between;
 }
 .content-table .table-header .back {
   cursor: pointer;
@@ -89,7 +90,7 @@ body {
   text-decoration: underline;
 }
 .content-table .table-header .title img {
-  width: 4.5rem;
+  width: auto;
   height: 3rem;
   margin-right: 20px;
 }

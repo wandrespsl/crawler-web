@@ -4,7 +4,7 @@
 const request = require("request");
 const cheerio = require("cheerio");
 
-function getCatalogue(filterCatalogue) {
+function getCataloguePolijic(filterCatalogue) {
   return new Promise((resolve, reject) => {
     if (!filterCatalogue) {
       return reject("Invalid data");
@@ -82,7 +82,7 @@ function getCatalogue(filterCatalogue) {
           console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
-        }       
+        }
       }
     });
   });
@@ -155,7 +155,75 @@ function getCatalogueUdea(filterCatalogue) {
   });
 }
 
+function getCatalogueItm(filterCatalogue) {
+  return new Promise((resolve, reject) => {
+    if (!filterCatalogue) {
+      return reject("Invalid data");
+    }
+    const hostUrl = "https://catalogobibliotecas.itm.edu.co";
+
+    const url =
+      hostUrl +
+      "/cgi-olib/?keyword=" +
+      filterCatalogue +
+      "&session=46810913&nh=20&infile=presearch.glue";
+
+    const nameU = "itm";
+    const universidad = "Instituto Tecnológico Metropolitano";
+
+    request(url, (error, response, html) => {
+      if (!error && response.statusCode == 200) {
+        const $ = cheerio.load(html);
+        const records = [];
+        const totalRecords = $(".number-of-hits font").text();
+
+        $(".hitlist-alt tr").each((i, element) => {
+          const rank = i;
+
+          const title = $(element)
+            .find(".resultsbright")
+            .text();
+
+          const autor = $(element)
+            .find(".extras i")
+            .text();
+
+          const link = $(element)
+            .find(".resultsbright a")
+            .attr("href");
+
+          const detail = hostUrl + link;
+          if (i > 0) {
+            const metadata = {
+              rank: rank,
+              title: title,
+              author: autor,
+              detail: detail
+            };
+            records.push(metadata);
+          }
+        });
+        console.log(url);
+        if (records.length != 0) {
+          const jsonCatalogue = {
+            url,
+            totalRecords,
+            nameU,
+            records,
+            universidad
+          };
+          resolve(jsonCatalogue);
+          console.log(jsonCatalogue);
+        } else {
+          resolve("No hay datos para la busqueda realizada");
+        }
+      }
+    });
+  });
+}
+
 module.exports = {
-  getCatalogue,
-  getCatalogueUdea
+  getCataloguePolijic,
+  getCatalogueUdea,
+  getCatalogueItm
 };

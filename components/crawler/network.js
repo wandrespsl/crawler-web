@@ -9,12 +9,9 @@ const router = express.Router();
 router.get("/polijic", function(req, res) {
   const filterCatalogue = req.query.keyword;
   const keyword = filterCatalogue.replace(/\s/g, "+");
-  // var results = [];
   controller
-    .getCatalogue(keyword)
+    .getCataloguePolijic(keyword)
     .then(catalogueList => {
-      // results.push(catalogueList);
-      // response.success(req, res, results, 200);
       response.success(req, res, catalogueList, 200);
     })
     .catch(e => {
@@ -27,6 +24,19 @@ router.get("/udea", function(req, res) {
   const keyword = filterCatalogue.replace(/\s/g, "+");
   controller
     .getCatalogueUdea(keyword)
+    .then(catalogueList => {
+      response.success(req, res, catalogueList, 200);
+    })
+    .catch(e => {
+      response.error(req, res, "Unexpected Error", 500, e);
+    });  
+});
+
+router.get("/itm", function(req, res) {
+  const filterCatalogue = req.query.keyword;
+  const keyword = filterCatalogue.replace(/\s/g, "+");
+  controller
+    .getCatalogueItm(keyword)
     .then(catalogueList => {
       response.success(req, res, catalogueList, 200);
     })
