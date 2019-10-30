@@ -1,5 +1,4 @@
 // const store = require("./store");
-const socket = require("../../socket").socket;
 // const config = require("../../config");
 
 const request = require("request");
