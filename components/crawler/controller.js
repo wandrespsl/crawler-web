@@ -71,20 +71,19 @@ function getCatalogue(filterCatalogue) {
           records.push(metadata);
         });
         console.log(url);
-        const jsonCatalogue = {
-          url,
-          totalRecords,
-          nameU,
-          records,
-          universidad
-        };
-
         if (records.length != 0) {
+          const jsonCatalogue = {
+            url,
+            totalRecords,
+            nameU,
+            records,
+            universidad
+          };
           resolve(jsonCatalogue);
           console.log(jsonCatalogue);
         } else {
-          return resolve("No hay resultados");
-        }
+          resolve("No hay datos para la busqueda realizada");
+        }       
       }
     });
   });
@@ -139,19 +138,18 @@ function getCatalogueUdea(filterCatalogue) {
           }
         });
         console.log(url);
-        const jsonCatalogue = {
-          url,
-          totalRecords,
-          nameU,
-          records,
-          universidad
-        };
-
         if (records.length != 0) {
+          const jsonCatalogue = {
+            url,
+            totalRecords,
+            nameU,
+            records,
+            universidad
+          };
           resolve(jsonCatalogue);
           console.log(jsonCatalogue);
         } else {
-          return resolve("No hay resultados");
+          resolve("No hay datos para la busqueda realizada");
         }
       }
     });

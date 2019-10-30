@@ -176,6 +176,9 @@ form.form-search {
 .form-search .input-group .input-group-append .btn-secondary:focus {
   box-shadow: none;
 }
+.form-search .input-group .input-group-append .btn-secondary:hover .radius {
+  opacity: 0.7;
+}
 .form-search .input-group .input-group-append .btn-secondary .radius {
   background-color: #70ecad;
   padding: 15px;
@@ -196,7 +199,7 @@ form.form-search {
 }
 .content-card {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin: 20px 0;
   flex-wrap: wrap;
   width: 100%;
@@ -284,4 +287,7 @@ form.form-search {
   100% {
     transform: translateX(0px);
   }
+}
+input:-internal-autofill-selected {
+  background-color: inherit !important;
 }
