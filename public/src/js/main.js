@@ -68,6 +68,7 @@ function renderRow(list, $container, $row) {
     th.textContent = tr.rank;
     tds[0].textContent = tr.author;
     tds[1].textContent = tr.title;
+    tds[2].style.minWidth = "100px";
     $container.appendChild(clone);
   });
 }
@@ -86,12 +87,17 @@ function addEventClick($element, data) {
     showTable();
   });
 }
-$formButton.addEventListener("click", async event => {
+
+$formButton.addEventListener("click", async event => {  
   event.preventDefault();
   const keyword = document.querySelector("input.form-control").value;
   loadCatalogue("polijic", keyword);
   loadCatalogue("udea", keyword);
   loadCatalogue("itm", keyword);
+  loadCatalogue("sanbuenaventura", keyword);
+  loadCatalogue("poligrancolombiano", keyword);
+  loadCatalogue("ceipa", keyword);
+  loadCatalogue("colegiatura", keyword);
 });
 
 function showTable() {
@@ -122,7 +128,7 @@ async function loadCatalogue(catalogue, keyword) {
     console.log(data);
     const withoutResults = data.body;
     if (withoutResults == "No hay datos para la busqueda realizada") {
-      return withoutResults;      
+      return withoutResults;
     } else {
       renderCard(data.body, $contentContainerCard);
     }

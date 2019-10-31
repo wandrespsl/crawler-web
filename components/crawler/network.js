@@ -45,4 +45,56 @@ router.get("/itm", function(req, res) {
     });  
 });
 
+router.get("/sanbuenaventura", function(req, res) {
+  const filterCatalogue = req.query.keyword;
+  const keyword = filterCatalogue.replace(/\s/g, "+");
+  controller
+    .getCatalogueSanbuena(keyword)
+    .then(catalogueList => {
+      response.success(req, res, catalogueList, 200);
+    })
+    .catch(e => {
+      response.error(req, res, "Unexpected Error", 500, e);
+    });  
+});
+
+router.get("/poligrancolombiano", function(req, res) {
+  const filterCatalogue = req.query.keyword;
+  const keyword = filterCatalogue.replace(/\s/g, "+");
+  controller
+    .getCataloguePoligranc(keyword)
+    .then(catalogueList => {
+      response.success(req, res, catalogueList, 200);
+    })
+    .catch(e => {
+      response.error(req, res, "Unexpected Error", 500, e);
+    });  
+});
+
+router.get("/ceipa", function(req, res) {
+  const filterCatalogue = req.query.keyword;
+  const keyword = filterCatalogue.replace(/\s/g, "+");
+  controller
+    .getCatalogueCeipa(keyword)
+    .then(catalogueList => {
+      response.success(req, res, catalogueList, 200);
+    })
+    .catch(e => {
+      response.error(req, res, "Unexpected Error", 500, e);
+    });  
+});
+
+router.get("/colegiatura", function(req, res) {
+  const filterCatalogue = req.query.keyword;
+  const keyword = filterCatalogue.replace(/\s/g, "+");
+  controller
+    .getCatalogueColegiatura(keyword)
+    .then(catalogueList => {
+      response.success(req, res, catalogueList, 200);
+    })
+    .catch(e => {
+      response.error(req, res, "Unexpected Error", 500, e);
+    });  
+});
+
 module.exports = router;
