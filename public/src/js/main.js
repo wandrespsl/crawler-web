@@ -7,6 +7,25 @@ async function getData(url) {
 }
 
 const $formButton = document.querySelector("button.btn-secondary");
+const $formInput = document.querySelector("#input-search");
+
+function deleteHeaderTable() {
+  const $tableHeaderTitle = document.querySelector(".title");
+  $tableHeaderTitle.remove();
+}
+
+function deleteTable(row) {
+  for (let index = 0; index < row.length; index++) {
+    const element = row[index];
+    element.remove();
+  }
+}
+function deleteCard(card) {
+  for (let index = 0; index < card.length; index++) {
+    const element = card[index];
+    element.remove();
+  }
+}
 
 function templateCard(card) {
   return `
@@ -42,22 +61,26 @@ function createTemplate(HTMLString) {
 }
 
 function renderTableHeader(list, $container) {
-  const $tableHeaderTitle = document.querySelector(".title");
   if ($container.children.length > 1) {
-    $tableHeaderTitle.remove();
+    deleteHeaderTable();
   }
   const HTMLStringT = templateTableHeader(list);
   const tableHeaderElement = createTemplate(HTMLStringT);
   $container.append(tableHeaderElement);
 }
 
+function renderCard(data, $container) {
+  const HTMLString = templateCard(data);
+  const cardElement = createTemplate(HTMLString);
+  $container.append(cardElement);
+  showCard(cardElement);
+  addEventClick(cardElement, data);
+}
+
 function renderRow(list, $container, $row) {
   const $tableRwo = document.querySelectorAll(".record-row tr");
   if ($tableRwo.length > 1) {
-    for (let index = 0; index < $tableRwo.length; index++) {
-      const element = $tableRwo[index];
-      element.remove();
-    }
+    deleteTable($tableRwo);
   }
   list.forEach(tr => {
     const clone = $row.content.cloneNode(true);
@@ -88,9 +111,28 @@ function addEventClick($element, data) {
   });
 }
 
-$formButton.addEventListener("click", async event => {  
-  event.preventDefault();
-  const keyword = document.querySelector("input.form-control").value;
+$formInput.addEventListener("keypress", event => {
+  const keyword = $formInput.value;
+  if ((event.which == 13 || event.keyCode == 13) && keyword != "") {
+    event.preventDefault();
+    callCata(keyword);
+  }
+});
+
+$formButton.addEventListener("click", event => {
+  const keyword = $formInput.value;
+  if (keyword != "") {
+    event.preventDefault();
+    callCata(keyword);
+  }
+});
+
+function callCata(keyword) {
+  const $oldCard = document.querySelectorAll(".card");
+  if ($oldCard.length > 1) {
+    deleteCard($oldCard);
+    backShowCard();
+  }
   loadCatalogue("polijic", keyword);
   loadCatalogue("udea", keyword);
   loadCatalogue("itm", keyword);
@@ -98,7 +140,7 @@ $formButton.addEventListener("click", async event => {
   loadCatalogue("poligrancolombiano", keyword);
   loadCatalogue("ceipa", keyword);
   loadCatalogue("colegiatura", keyword);
-});
+}
 
 function showTable() {
   const $contenTable = document.querySelector(".content-table");
@@ -111,14 +153,6 @@ function showTable() {
 
 function showCard(cardElement) {
   cardElement.style.animation = "cardIn .8s forwards";
-}
-
-function renderCard(data, $container) {
-  const HTMLString = templateCard(data);
-  const cardElement = createTemplate(HTMLString);
-  $container.append(cardElement);
-  showCard(cardElement);
-  addEventClick(cardElement, data);
 }
 
 async function loadCatalogue(catalogue, keyword) {
@@ -148,5 +182,7 @@ function backShowCard() {
   $contentCard.classList.remove("div-hidden");
 
   const $card = document.querySelector(".card");
-  $card.style.animation = "cardIn .8s forwards";
+  if ($card) {
+    showCard($card);
+  }
 }
