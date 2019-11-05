@@ -20,6 +20,7 @@ function deleteTable(row) {
     element.remove();
   }
 }
+
 function deleteCard(card) {
   for (let index = 0; index < card.length; index++) {
     const element = card[index];
@@ -49,7 +50,7 @@ function templateTableHeader(header) {
   return `
     <div class="title">
       <img src="src/imgs/${header.nameU}.png" alt="${header.nameU}" />      
-      <a href="${header.url}" target="blank">Ver lista completa</a>
+      <a href="${header.url}" target="_blank">Ver lista completa</a>
     </div>
     `;
 }
@@ -140,6 +141,7 @@ function callCata(keyword) {
   loadCatalogue("poligrancolombiano", keyword);
   loadCatalogue("ceipa", keyword);
   loadCatalogue("colegiatura", keyword);
+  loadCatalogue("unal", keyword);
 }
 
 function showTable() {

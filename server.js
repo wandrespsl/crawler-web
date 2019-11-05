@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const server = require("http").Server(app);
 
-const config = require('./config');
+const config = require("./config");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const db = require("./db");
@@ -14,11 +14,12 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-
 router(app);
 
 // app.use(config.publicRoute, express.static("public"));
 
 server.listen(config.port, function() {
-  console.log("La aplicación está escuchando en" + config.host + ": " + config.port);
+  console.log(
+    "La aplicación está escuchando en" + config.host + ": " + config.port
+  );
 });

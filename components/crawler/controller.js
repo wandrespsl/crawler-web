@@ -518,6 +518,92 @@ function getCatalogueColegiatura(filterCatalogue) {
   });
 }
 
+function getCatalogueUnal(filterCatalogue) {
+  return new Promise((resolve, reject) => {
+    if (!filterCatalogue) {
+      return reject("Invalid data");
+    }
+    const hostUrl = "http://168.176.5.96";
+
+    const url =
+      hostUrl +
+      "/F/?func=find-b&request=" +
+      filterCatalogue +
+      "&find_code=WRD&adjacent=N&x=44&y=6";
+
+    const nameU = "unal";
+    const universidad = "Universidad Nacional de Colombia";
+
+    request(url, (error, response, html) => {
+      if (!error && response.statusCode == 200) {
+        const $ = cheerio.load(html);
+        const records = [];
+        const totalRecords = $('.text3[width="20%"]')
+          .text()
+          .trim()
+          .substring(40, 44)
+          .trim();
+
+        $("table[cellspacing='2'] tr[valign='baseline']").each((i, element) => {
+          const rank = i + 1;
+
+          const titleStartingPosition = $(element)
+            .find("td.td1:nth-child(5)")
+            .html()
+            .trim()
+            .indexOf("=");
+
+          const titleFinalPosition = $(element)
+            .find("td.td1:nth-child(5)")
+            .html()
+            .trim()
+            .indexOf("recordLink");
+
+          const titlePre = $(element)
+            .find("td.td1:nth-child(5)")
+            .html()
+            .trim()
+            .substring(titleStartingPosition + 3, titleFinalPosition - 3);
+
+          const title = titlePre.replace(/&nbsp;/g, ' ');
+
+          const autor = $(element)
+            .find("td.td1:nth-child(3)")
+            .text()
+            .trim();
+
+          const link = $(element)
+            .find("td.td1:nth-child(1) a")
+            .attr("href");
+
+          const metadata = {
+            rank: rank,
+            title: title,
+            author: autor,
+            detail: link
+          };
+
+          records.push(metadata);
+        });
+        console.log(url);
+        if (records.length != 0) {
+          const jsonCatalogue = {
+            url,
+            totalRecords,
+            nameU,
+            records,
+            universidad
+          };
+          resolve(jsonCatalogue);
+          console.log(jsonCatalogue);
+        } else {
+          resolve("No hay datos para la busqueda realizada");
+        }
+      }
+    });
+  });
+}
+
 module.exports = {
   getCataloguePolijic,
   getCatalogueUdea,
@@ -525,5 +611,6 @@ module.exports = {
   getCatalogueSanbuena,
   getCataloguePoligranc,
   getCatalogueCeipa,
-  getCatalogueColegiatura
+  getCatalogueColegiatura,
+  getCatalogueUnal
 };
