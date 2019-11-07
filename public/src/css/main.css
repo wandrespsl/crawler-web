@@ -189,7 +189,7 @@ form.form-search {
   opacity: 0.7;
 }
 .form-search .input-group .input-group-append .btn-secondary .radius {
-  background-color: red;
+  background-color: #70ecad;
   padding: 15px;
   border-radius: 50%;
   width: 54px;

@@ -1,4 +1,4 @@
-const BASE_API = "http://localhost:3000/crawler/";
+const BASE_API = "https://catalago-web-amva.herokuapp.com/crawler/";
 
 async function getData(url) {
   const response = await fetch(url);
