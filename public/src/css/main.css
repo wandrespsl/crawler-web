@@ -322,4 +322,11 @@ input:-internal-autofill-selected {
   .form-search .search-radio .custom-control {
     padding-left: 2.5rem;
   }
+  .table td, .table th {
+    max-width: 96px;
+  }
+  .content-table .table-header .title img {
+    margin-right: 0;
+    height: 2.5rem;
+  }
 }
