@@ -4,7 +4,7 @@
   "description": "crawler",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node server.js"
   },
   "author": "W Andres Castañeda <weimarandrescastaneda@gmail.com>",
   "license": "ISC",
