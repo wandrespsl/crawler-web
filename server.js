@@ -16,10 +16,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 router(app);
 
+app.set("port", process.env.PORT || 3000);
+
 app.use(config.publicRoute, express.static("public"));
 
-server.listen(config.port, function() {
-  console.log(
-    "La aplicación está escuchando en" + config.host + ": " + config.port
-  );
+server.listen(app.get("port"), function() {
+  console.log(`La aplicación está escuchando en ${app.get("port")}`);
 });
