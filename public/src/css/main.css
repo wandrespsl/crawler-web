@@ -300,3 +300,8 @@ form.form-search {
 input:-internal-autofill-selected {
   background-color: inherit !important;
 }
+@media (max-width: 992px) {
+  .content-card  {
+    justify-content: center;
+  }
+}
