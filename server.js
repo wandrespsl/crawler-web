@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 router(app);
 
-// app.use(config.publicRoute, express.static("public"));
+app.use(config.publicRoute, express.static("public"));
 
 server.listen(config.port, function() {
   console.log(

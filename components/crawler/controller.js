@@ -69,7 +69,6 @@ function getCataloguePolijic(filterCatalogue) {
 
           records.push(metadata);
         });
-        console.log(url);
         if (records.length != 0) {
           const jsonCatalogue = {
             url,
@@ -79,7 +78,6 @@ function getCataloguePolijic(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
@@ -136,7 +134,6 @@ function getCatalogueUdea(filterCatalogue) {
             records.push(metadata);
           }
         });
-        console.log(url);
         if (records.length != 0) {
           const jsonCatalogue = {
             url,
@@ -146,7 +143,6 @@ function getCatalogueUdea(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
@@ -203,7 +199,6 @@ function getCatalogueItm(filterCatalogue) {
             records.push(metadata);
           }
         });
-        console.log(url);
         if (records.length != 0) {
           const jsonCatalogue = {
             url,
@@ -213,7 +208,6 @@ function getCatalogueItm(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
@@ -270,7 +264,6 @@ function getCatalogueSanbuena(filterCatalogue) {
             records.push(metadata);
           }
         });
-        console.log(url);
         if (records.length != 0) {
           const jsonCatalogue = {
             url,
@@ -280,7 +273,6 @@ function getCatalogueSanbuena(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
@@ -348,7 +340,6 @@ function getCataloguePoligranc(filterCatalogue) {
 
           records.push(metadata);
         });
-        console.log(url);
         if (records.length != 0) {
           const jsonCatalogue = {
             url,
@@ -358,7 +349,6 @@ function getCataloguePoligranc(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
@@ -421,7 +411,6 @@ function getCatalogueCeipa(filterCatalogue) {
 
           records.push(metadata);
         });
-        console.log(url);
         const totalRecords = records.length;
         if (records.length != 0) {
           const jsonCatalogue = {
@@ -432,7 +421,6 @@ function getCatalogueCeipa(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
@@ -499,7 +487,6 @@ function getCatalogueColegiatura(filterCatalogue) {
 
           records.push(metadata);
         });
-        console.log(url);
         if (records.length != 0) {
           const jsonCatalogue = {
             url,
@@ -509,7 +496,6 @@ function getCatalogueColegiatura(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
@@ -585,7 +571,6 @@ function getCatalogueUnal(filterCatalogue) {
 
           records.push(metadata);
         });
-        console.log(url);
         if (records.length != 0) {
           const jsonCatalogue = {
             url,
@@ -595,7 +580,6 @@ function getCatalogueUnal(filterCatalogue) {
             universidad
           };
           resolve(jsonCatalogue);
-          console.log(jsonCatalogue);
         } else {
           resolve("No hay datos para la busqueda realizada");
         }
