@@ -235,7 +235,7 @@ form.form-search {
   width: auto;
 }
 .content-card .card .card-body {
-  padding: 0.625rem 1rem;
+  padding: 1rem 0.8rem;
   border-radius: 0 0 5px 5px;
   background-color: rgba(255, 255, 255, 0.7);
   width: 14.125rem;
@@ -245,11 +245,13 @@ form.form-search {
 }
 .content-card .card .card-body .card-title {
   color: #000000;
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 15px;  
   letter-spacing: -0.53px;
   line-height: 20px;
   margin: 0;
+}
+.content-card .card .card-body .card-title span {
+  font-weight: bold;
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
