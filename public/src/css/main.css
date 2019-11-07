@@ -319,4 +319,7 @@ input:-internal-autofill-selected {
     flex-wrap: wrap;
     justify-content: center;
   }
+  .form-search .search-radio .custom-control {
+    padding-left: 2.5rem;
+  }
 }
