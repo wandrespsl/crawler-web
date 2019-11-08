@@ -329,4 +329,7 @@ input:-internal-autofill-selected {
     margin-right: 0;
     height: 2.5rem;
   }
+  .table th, .table td {
+    vertical-align: baseline;
+  }
 }
