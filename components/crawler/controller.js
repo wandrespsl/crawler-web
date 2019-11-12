@@ -1,5 +1,5 @@
-// const store = require("./store");
-// const config = require("../../config");
+const store = require("./store");
+const config = require("../../config");
 
 const request = require("request");
 const cheerio = require("cheerio");
@@ -9,6 +9,7 @@ function getCataloguePolijic(filterCatalogue) {
     if (!filterCatalogue) {
       return reject("Invalid data");
     }
+    
     const hostUrl = "http://prometeo-politecnicojic.hosted.exlibrisgroup.com";
 
     const url =
