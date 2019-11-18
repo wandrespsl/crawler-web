@@ -171,6 +171,8 @@ form.form-search {
   min-height: 60px;
   height: auto;
   outline: none;
+  border-radius: 30px 0 0 30px;
+  width: 400px;
 }
 .form-search .input-group input.form-control:focus {
   box-shadow: none;
@@ -322,14 +324,28 @@ input:-internal-autofill-selected {
   .form-search .search-radio .custom-control {
     padding-left: 2.5rem;
   }
-  .table td, .table th {
+  .table td,
+  .table th {
     max-width: 96px;
   }
   .content-table .table-header .title img {
     margin-right: 0;
     height: 2.5rem;
   }
-  .table th, .table td {
+  .table th,
+  .table td {
     vertical-align: baseline;
+  }
+}
+
+@media (max-width: 500px) {
+  .form-search .input-group input.form-control {
+    width: 300px;
+  }
+}
+
+@media (max-width: 500px) {
+  .form-search .input-group input.form-control {
+    width: 230px;
   }
 }
