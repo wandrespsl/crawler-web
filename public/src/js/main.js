@@ -3,15 +3,15 @@ const BASE_API = "https://catalago-web-amva.herokuapp.com/crawler/";
 
 var contador = 0;
 
-async function getData(url) {
+async function getData(url) {  
   const response = await fetch(url);
-  const data = await response.json();
-  contador = contador + 1;
-  if (contador == 8) {
-    enabledElement($formButton);
-    enabledElement($formInput);
-    $inputGroup.classList.remove("load-data");
-  }
+  // contador = contador + 1;
+  const data = await response.json();    
+  // if (contador == 8) {    
+  //   enabledElement($formButton);
+  //   enabledElement($formInput);
+  //   $inputGroup.classList.remove("load-data");
+  // }
   return data;
 }
 const $formButton = document.querySelector("button.btn-secondary");
@@ -179,8 +179,14 @@ function showCard(cardElement) {
 async function loadCatalogue(catalogue, keyword) {
   try {
     const $contentContainerCard = document.querySelector(".content-card");
-    const data = await getData(`${BASE_API}${catalogue}/?keyword=${keyword}`);
-    console.log(data);
+    const data = await getData(`${BASE_API}${catalogue}/?keyword=${keyword}`);    
+    contador = contador + 1;
+    if (contador == 8) {    
+      enabledElement($formButton);
+      enabledElement($formInput);
+      $inputGroup.classList.remove("load-data");
+    }
+    console.log(data, 'contador:', contador);    
     const withoutResults = data.body;
     if (withoutResults == "No hay datos para la busqueda realizada") {
       return withoutResults;

@@ -211,6 +211,7 @@ form.form-search {
 }
 .form-search .input-group.load-data .input-group-append .btn-secondary {
   opacity: 0.5;
+  background-color: #e9ecef;
 }
 .form-search .input-group .input-group-append .btn-secondary:focus {
   box-shadow: none;
