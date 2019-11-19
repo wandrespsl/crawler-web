@@ -28,7 +28,7 @@ function getCataloguePolijic(filterCatalogue) {
         const totalRecords = $('.text3[width="20%"]')
           .text()
           .trim()
-          .substring(40, 44)
+          .substring(38, 44)
           .trim();
 
         $("table[cellspacing='2'] tr[valign='baseline']").each((i, element) => {
@@ -528,7 +528,7 @@ function getCatalogueUnal(filterCatalogue) {
         const totalRecords = $('.text3[width="20%"]')
           .text()
           .trim()
-          .substring(40, 44)
+          .substring(38, 44)
           .trim();
 
         $("table[cellspacing='2'] tr[valign='baseline']").each((i, element) => {

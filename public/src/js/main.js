@@ -1,5 +1,6 @@
 const BASE_API = "https://catalago-web-amva.herokuapp.com/crawler/";
 // const BASE_API = "http://localhost:3000/crawler/";
+
 var contador = 0;
 
 async function getData(url) {
@@ -9,12 +10,13 @@ async function getData(url) {
   if (contador == 8) {
     enabledElement($formButton);
     enabledElement($formInput);
+    $inputGroup.classList.remove("load-data");
   }
   return data;
 }
 const $formButton = document.querySelector("button.btn-secondary");
 const $formInput = document.querySelector("#input-search");
-
+const $inputGroup = document.querySelector(".input-group");
 
 function deleteHeaderTable() {
   const $tableHeaderTitle = document.querySelector(".title");
@@ -120,24 +122,28 @@ function addEventClick($element, data) {
 }
 
 $formInput.addEventListener("keypress", event => {
-  const keyword = $formInput.value;
+  const valueInput = $formInput.value;
+  const keyword = reemplazarAcentos(valueInput);
   if ((event.which == 13 || event.keyCode == 13) && keyword != "") {
     contador = 0;
     event.preventDefault();
     callCata(keyword);
     disabledElement($formButton);
     disabledElement($formInput);
+    $inputGroup.classList.add("load-data");
   }
 });
 
 $formButton.addEventListener("click", event => {
-  const keyword = $formInput.value;
+  const valueInput = $formInput.value;
+  const keyword = reemplazarAcentos(valueInput);
   if (keyword != "") {
     contador = 0;
     event.preventDefault();
     callCata(keyword);
     disabledElement($formButton);
     disabledElement($formInput);
+    $inputGroup.classList.add("load-data");
   }
 });
 
@@ -208,3 +214,35 @@ function disabledElement(element) {
 function enabledElement(element) {
   element.removeAttribute("disabled");
 }
+
+var reemplazarAcentos = function(cadena) {
+  var chars = {
+    á: "a",
+    é: "e",
+    í: "i",
+    ó: "o",
+    ú: "u",
+    à: "a",
+    è: "e",
+    ì: "i",
+    ò: "o",
+    ù: "u",
+    ñ: "n",
+    Á: "A",
+    É: "E",
+    Í: "I",
+    Ó: "O",
+    Ú: "U",
+    À: "A",
+    È: "E",
+    Ì: "I",
+    Ò: "O",
+    Ù: "U",
+    Ñ: "N"
+  };
+  var expr = /[áàéèíìóòúùñ]/gi;
+  var res = cadena.replace(expr, function(e) {
+    return chars[e];
+  });
+  return res;
+};
