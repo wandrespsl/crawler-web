@@ -1,14 +1,20 @@
 const BASE_API = "https://catalago-web-amva.herokuapp.com/crawler/";
 // const BASE_API = "http://localhost:3000/crawler/";
+var contador = 0;
 
 async function getData(url) {
   const response = await fetch(url);
   const data = await response.json();
+  contador = contador + 1;
+  if (contador == 8) {
+    enabledElement($formButton);
+    enabledElement($formInput);
+  }
   return data;
 }
-
 const $formButton = document.querySelector("button.btn-secondary");
 const $formInput = document.querySelector("#input-search");
+
 
 function deleteHeaderTable() {
   const $tableHeaderTitle = document.querySelector(".title");
@@ -116,16 +122,22 @@ function addEventClick($element, data) {
 $formInput.addEventListener("keypress", event => {
   const keyword = $formInput.value;
   if ((event.which == 13 || event.keyCode == 13) && keyword != "") {
+    contador = 0;
     event.preventDefault();
     callCata(keyword);
+    disabledElement($formButton);
+    disabledElement($formInput);
   }
 });
 
 $formButton.addEventListener("click", event => {
   const keyword = $formInput.value;
   if (keyword != "") {
+    contador = 0;
     event.preventDefault();
     callCata(keyword);
+    disabledElement($formButton);
+    disabledElement($formInput);
   }
 });
 
@@ -188,4 +200,11 @@ function backShowCard() {
   if ($card) {
     showCard($card);
   }
+}
+
+function disabledElement(element) {
+  element.setAttribute("disabled", "");
+}
+function enabledElement(element) {
+  element.removeAttribute("disabled");
 }

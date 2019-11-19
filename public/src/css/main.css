@@ -90,7 +90,7 @@ body {
   color: #000000;
 }
 .content-table .table-header a {
-  color: #0091ff;
+  color: #4166A3;
   font-size: 14px;
   letter-spacing: -0.47px;
   line-height: 19px;
@@ -152,14 +152,14 @@ form.form-search {
   .search-radio
   .custom-control-input:checked
   ~ .custom-control-label::before {
-  border-color: #70ecad;
-  background-color: #70ecad;
+  border-color: #4166A3;
+  background-color: #4166A3;
 }
 .form-search
   .search-radio
   .custom-control-input:focus
   ~ .custom-control-label::before {
-  box-shadow: 0 0 0 0.2rem #70ecad;
+  box-shadow: 0 0 0 0.2rem #4166A3;
 }
 .form-search .input-group {
   flex: 1 0 auto;
@@ -191,7 +191,7 @@ form.form-search {
   opacity: 0.7;
 }
 .form-search .input-group .input-group-append .btn-secondary .radius {
-  background-color: #70ecad;
+  background-color: #4166A3;
   padding: 15px;
   border-radius: 50%;
   width: 54px;
@@ -199,7 +199,7 @@ form.form-search {
 }
 .form-search .input-group .input-group-append .btn-secondary i {
   font-size: 26px;
-  color: #2d2d2d;
+  color: white;
 }
 .form-search
   .search-radio
