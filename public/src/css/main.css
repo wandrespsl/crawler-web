@@ -23,6 +23,7 @@ body {
   padding: 0 0 15px;
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .header {
   background-color: rgba(0, 0, 0, 0.5);
@@ -310,12 +311,6 @@ form.form-search {
   font-weight: bold;
 }
 
-@media (min-width: 576px) and (max-width: 767px) {
-  .container {
-    max-width: initial;
-  }
-}
-
 .div-hidden {
   display: none;
 }
@@ -400,6 +395,12 @@ input:-internal-autofill-selected {
   background: #4166a3;
 }
 
+@media (min-width: 576px) and (max-width: 767px) {
+  .container {
+    max-width: initial;
+  }
+}
+
 @media (max-width: 992px) {
   .content-card {
     justify-content: center;
@@ -455,6 +456,15 @@ input:-internal-autofill-selected {
   }
   .form-search .input-group input.form-control {
     width: 230px;
+  }
+  .content-table .table-header .title img {
+    width: 5.5rem;
+  }
+  .content {
+    margin: 0 0 150px;
+  }
+  .table {
+    font-size: 0.65rem;
   }
 }
 
