@@ -1,17 +1,10 @@
 const BASE_API = "https://catalago-web-amva.herokuapp.com/crawler/";
-// const BASE_API = "http://localhost:3000/crawler/";
 
 var contador = 0;
 
 async function getData(url) {  
   const response = await fetch(url);
-  // contador = contador + 1;
   const data = await response.json();    
-  // if (contador == 8) {    
-  //   enabledElement($formButton);
-  //   enabledElement($formInput);
-  //   $inputGroup.classList.remove("load-data");
-  // }
   return data;
 }
 const $formButton = document.querySelector("button.btn-secondary");
