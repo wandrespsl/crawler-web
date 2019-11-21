@@ -445,6 +445,9 @@ input:-internal-autofill-selected {
     width: 125px;
     margin-left: 0;
   }  
+  .content {
+    margin: 0 0 130px;
+  }
 }
 @media (max-width: 500px) {
   .form-search .input-group input.form-control {
