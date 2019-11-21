@@ -374,15 +374,15 @@ input:-internal-autofill-selected {
 }
 .footer p {
   margin: 0 0 5px;
-  font-size: 13px;
+  font-size: 0.75rem;
 }
 .footer p span {
-  font-weight: 600;
+  font-weight: bold;
 }
 .footer h6 {
-  font-weight: 600;
+  font-weight: bold;
   margin: 0 0 5px;
-  font-size: 14px;
+  font-size: 0.75rem;
 }
 
 ::-webkit-scrollbar {
@@ -433,10 +433,10 @@ input:-internal-autofill-selected {
     vertical-align: baseline;
   }
   .footer p {
-    font-size: 10px;
+    font-size: 0.625rem;
   }
   .footer a, .footer h6, .header .software-name span {
-    font-size: 12px;
+    font-size: 0.7rem;
   }
   .header .software-name h2 {
     font-size: 1.5rem;
