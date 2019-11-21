@@ -13,6 +13,7 @@ body {
   font-weight: 400;
   font-size: 14px;
   background-color: rgba(0, 0, 0, 0.05);
+  overflow-x: hidden;
 }
 
 .bg {
@@ -52,7 +53,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 0 0 165px;
+  margin: 0 0 110px;
+}
+.table-responsive {
+  overflow-x: hidden;
 }
 .table {
   background-color: rgba(255, 255, 255, 0.9);
@@ -356,7 +360,7 @@ input:-internal-autofill-selected {
 }
 .footer {
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 5px 35px;
+  padding: 10px 35px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -370,6 +374,7 @@ input:-internal-autofill-selected {
 }
 .footer p {
   margin: 0 0 5px;
+  font-size: 13px;
 }
 .footer p span {
   font-weight: 600;
@@ -377,7 +382,24 @@ input:-internal-autofill-selected {
 .footer h6 {
   font-weight: 600;
   margin: 0 0 5px;
+  font-size: 14px;
 }
+
+::-webkit-scrollbar {
+  width: 0.6rem;
+  height: 4.6rem;
+}
+
+::-webkit-scrollbar-track-piece {
+  background-color: white;
+  border: 0.06rem solid #8990a0;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 0.281rem;
+  background: #4166a3;
+}
+
 @media (max-width: 992px) {
   .content-card {
     justify-content: center;
