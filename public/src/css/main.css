@@ -432,14 +432,6 @@ input:-internal-autofill-selected {
   .table td {
     vertical-align: baseline;
   }
-}
-@media (max-width: 500px) {
-  .form-search .input-group input.form-control {
-    width: 300px;
-  }
-  .form-search .input-group input.form-control {
-    width: 230px;
-  }
   .footer p {
     font-size: 10px;
   }
@@ -452,6 +444,14 @@ input:-internal-autofill-selected {
   .header img {
     width: 125px;
     margin-left: 0;
+  }  
+}
+@media (max-width: 500px) {
+  .form-search .input-group input.form-control {
+    width: 300px;
+  }
+  .form-search .input-group input.form-control {
+    width: 230px;
   }
 }
 
