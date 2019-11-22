@@ -42,6 +42,9 @@ body {
 .header .software-name h2 {
   margin: 0 20px 0 0;
 }
+.header .software-name h2 span{
+  font-size: 0.625rem;
+}
 .header .software-name span {
   width: 150px;
 }
