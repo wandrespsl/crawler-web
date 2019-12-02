@@ -32,6 +32,15 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  position: relative;
+}
+.header .fa-question-circle {
+  color: white;
+  font-size: 20px;
+}
+.header .manual {
+  position: absolute;
+  right: 30px;
 }
 .header .software-name {
   display: flex;
@@ -42,7 +51,7 @@ body {
 .header .software-name h2 {
   margin: 0 20px 0 0;
 }
-.header .software-name h2 span{
+.header .software-name h2 span {
   font-size: 0.625rem;
 }
 .header .software-name span {
@@ -439,7 +448,9 @@ input:-internal-autofill-selected {
   .footer p {
     font-size: 0.625rem;
   }
-  .footer a, .footer h6, .header .software-name span {
+  .footer a,
+  .footer h6,
+  .header .software-name span {
     font-size: 0.7rem;
   }
   .header .software-name h2 {
@@ -448,7 +459,7 @@ input:-internal-autofill-selected {
   .header img {
     width: 125px;
     margin-left: 0;
-  }  
+  }
   .content {
     margin: 0 0 130px;
   }
@@ -470,4 +481,3 @@ input:-internal-autofill-selected {
     font-size: 0.65rem;
   }
 }
-
